@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.6)
-project(library)
+project(jsDroid)
 
 set(TARGET jsdroid)
 set(ANDROID_DEPENDENCIES android dl log)

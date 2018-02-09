@@ -1,0 +1,60 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        externalNativeBuild {
+            cmake {
+                abiFilters 'armeabi-v7a'
+            }
+        }
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
+    }
+}
+
+ext {
+    bintrayRepo = 'Maven'
+    bintrayName = 'jsDroid'
+
+    publishedGroupId = 'com.arecmetafora'
+    libraryName = 'JSDroid'
+    artifact = 'jsDroid'
+
+    libraryDescription = 'JavaScript interpreter for Android (using JavaScriptCore engine)'
+
+    siteUrl = 'https://github.com/arecmetafora/JavaScriptDroid'
+    gitUrl = 'https://github.com/arecmetafora/JavaScriptDroid.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'arecmetafora'
+    developerName = 'Alexander Haroldo da Rocha'
+    developerEmail = 'arec.metafora@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+dependencies {
+    compile 'com.google.code.gson:gson:2.8.2'
+
+    testImplementation 'junit:junit:4.12'
+    androidTestCompile 'com.android.support:support-annotations:27.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+}
+
+// Publish library to bintray. This is the readymade scripts made by github user nuuneoi to make uploading to bintray easy.
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
